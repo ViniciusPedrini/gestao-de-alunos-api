@@ -1,0 +1,35 @@
+[
+  {
+    "nome": "Marina Albuquerque",
+    "emailLocalPart": "marina.albuquerque",
+    "matriculaPrefixo": "2025101",
+    "senha": "Senha@123",
+    "disciplinaId": "disciplina-matematica",
+    "trabalho": {
+      "titulo": "Lista de Exercícios de Álgebra",
+      "descricao": "Resolução dos exercícios do capítulo 3."
+    }
+  },
+  {
+    "nome": "Rafael Tavares",
+    "emailLocalPart": "rafael.tavares",
+    "matriculaPrefixo": "2025102",
+    "senha": "Senha@456",
+    "disciplinaId": "disciplina-historia",
+    "trabalho": {
+      "titulo": "Resumo sobre a Revolução Francesa",
+      "descricao": "Síntese dos principais eventos e consequências."
+    }
+  },
+  {
+    "nome": "Beatriz Nogueira",
+    "emailLocalPart": "beatriz.nogueira",
+    "matriculaPrefixo": "2025103",
+    "senha": "Senha@789",
+    "disciplinaId": "disciplina-programacao-web",
+    "trabalho": {
+      "titulo": "Portfólio Pessoal em HTML e CSS",
+      "descricao": "Página pessoal com seções de apresentação e projetos."
+    }
+  }
+]

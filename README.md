@@ -260,3 +260,43 @@ curl -X POST http://localhost:3000/api/alunos/aluno-ana-souza/trabalhos \
 
 > Novos registros criados via API recebem ids no formato UUID (gerados com
 > `crypto.randomUUID()`), diferente dos ids legíveis usados nos dados fake acima.
+
+## Testes automatizados
+
+Os testes de API usam **Mocha**, **SuperTest** e **Chai**, e sobem a aplicação em memória (sem
+precisar de um servidor HTTP rodando) contra uma instância de MongoDB real.
+
+```
+test/
+  setup/
+    globalHooks.js        # root hook do Mocha: fecha a conexão do Mongoose ao final da suíte
+  helpers/
+    auth.helper.js         # login de admin e de aluno
+    alunos.helper.js       # cadastro e matrícula de aluno (ações de admin)
+    trabalhos.helper.js    # registro de entrega de trabalho (ação do aluno)
+  utils/
+    loadFixture.js         # leitura dos arquivos de fixture (JSON)
+    unique.js              # geração de sufixo único para e-mail/matrícula entre execuções
+  fixtures/
+    alunos.fixture.json    # massa de dados (Data-Driven Testing)
+  auth.test.js
+  aluno-trabalho.flow.test.js
+```
+
+Variáveis de ambiente (ver [`env.example`](env.example)):
+
+```bash
+cp env.example .env
+```
+
+- `MONGODB_URI` — banco usado pelos testes (padrão: MongoDB local).
+- `ADMIN_EMAIL` / `ADMIN_SENHA` — credenciais do admin usadas pelo helper de login (padrão: as do
+  seed).
+
+```bash
+npm test
+```
+
+Os testes também rodam automaticamente no GitHub Actions a cada push/PR para `main`
+([`.github/workflows/tests.yml`](.github/workflows/tests.yml)), subindo um serviço MongoDB
+descartável para a execução.
